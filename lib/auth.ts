@@ -18,7 +18,7 @@ export const auth = betterAuth({
   plugins: [
     emailOTP({
       async sendVerificationOTP({ email, otp }) {
-        const { data, error } = await resend.emails.send({
+        await resend.emails.send({
           from: "LMS Course Platform <onboarding@resend.dev>",
           to: [email],
           subject: "Your OTP code - Verify your email",
