@@ -80,6 +80,10 @@ export const Uploader = () => {
       }
 
       const { presignedUrl, key } = await presignedResponse.json();
+
+      await new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
+      });
     } catch {}
   }
 
