@@ -12,7 +12,7 @@ import { ArrowLeftIcon, PlusIcon, SparkleIcon } from "lucide-react";
 import Link from "next/link";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import { Resolver, useForm } from "react-hook-form";
 import {
   courseCategory,
   courseLevel,
@@ -46,7 +46,7 @@ import { Uploader } from "@/components/file-uploader/uploader";
 
 export default function CourseCreationPage() {
   const form = useForm<CourseSchemaType>({
-    resolver: zodResolver(courseSchema),
+    resolver: zodResolver(courseSchema) as Resolver<CourseSchemaType>,
     defaultValues: {
       title: "",
       description: "",
@@ -172,7 +172,7 @@ export default function CourseCreationPage() {
                   <FormItem className="w-full">
                     <FormLabel>Thumbnail image</FormLabel>
                     <FormControl>
-                      <Uploader />
+                      <Uploader value={field.value} onChange={field.onChange} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
