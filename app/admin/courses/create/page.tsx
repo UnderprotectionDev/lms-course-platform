@@ -73,7 +73,7 @@ export default function CourseCreationPage() {
     },
   });
 
-  function onSubmit(values: CourseSchemaType) {
+  async function onSubmit(values: CourseSchemaType) {
     startTransition(async () => {
       const { data: result, error } = await tryCatch(createCourse(values));
 
@@ -195,7 +195,11 @@ export default function CourseCreationPage() {
                   <FormItem className="w-full">
                     <FormLabel>Thumbnail image</FormLabel>
                     <FormControl>
-                      <Uploader value={field.value} onChange={field.onChange} />
+                      <Uploader
+                        value={field.value}
+                        onChange={field.onChange}
+                        fileTypeAccepted="image"
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
