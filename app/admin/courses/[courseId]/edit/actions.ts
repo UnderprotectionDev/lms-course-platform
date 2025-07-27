@@ -384,7 +384,7 @@ export async function deleteChapter({
   } catch {
     return {
       status: "error",
-      message: "Failed to delete lesson.",
+      message: "Failed to delete chapter.",
     };
   }
 }
