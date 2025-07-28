@@ -90,6 +90,8 @@ model Course {
 
   status CourseStatus @default(Draft)
 
+  stripePriceId String @unique
+
   category         String
   smallDescription String
   slug             String @unique
