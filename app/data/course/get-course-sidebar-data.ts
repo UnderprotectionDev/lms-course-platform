@@ -1,5 +1,6 @@
-import { prisma } from "@/lib/db";
 import "server-only";
+
+import { prisma } from "@/lib/db";
 import { requireUser } from "../user/require-user";
 import { notFound } from "next/navigation";
 
@@ -35,6 +36,16 @@ export async function getCourseSidebarData(slug: string) {
               title: true,
               position: true,
               description: true,
+              lessonProgress: {
+                where: {
+                  userId: session.id,
+                },
+                select: {
+                  id: true,
+                  completed: true,
+                  lessonId: true,
+                },
+              },
             },
           },
         },
